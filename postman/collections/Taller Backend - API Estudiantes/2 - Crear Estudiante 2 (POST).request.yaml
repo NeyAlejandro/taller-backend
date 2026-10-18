@@ -1,0 +1,15 @@
+$kind: http-request
+description: Crea un segundo estudiante para tener datos con los que practicar.
+url: "{{base_url}}"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nombre": "Pedro Ruiz",
+      "email": "pedro@taller.com",
+      "curso": "9B"
+    }
+order: 2000

@@ -1,0 +1,5 @@
+$kind: http-request
+description: Retorna la lista completa de todos los estudiantes. Retorna 200 OK.
+url: "{{base_url}}"
+method: GET
+order: 3000

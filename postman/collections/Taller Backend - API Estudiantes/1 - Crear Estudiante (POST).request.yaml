@@ -1,0 +1,15 @@
+$kind: http-request
+description: Crea un nuevo estudiante. Retorna 201 Created con el objeto guardado (incluye el id generado).
+url: "{{base_url}}"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nombre": "Ana Lopez",
+      "email": "ana@taller.com",
+      "curso": "10A"
+    }
+order: 1000

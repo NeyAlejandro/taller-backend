@@ -1,0 +1,7 @@
+$kind: http-request
+description: |-
+  Busca el estudiante con id=1. Cambia el numero al final por el id que necesitas.
+  Retorna 200 OK si existe, o 404 Not Found si no.
+url: "{{base_url}}/1"
+method: GET
+order: 4000

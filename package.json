@@ -1,0 +1,12 @@
+{
+  "name": "taller-backend-e2e",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1"
+  }
+}

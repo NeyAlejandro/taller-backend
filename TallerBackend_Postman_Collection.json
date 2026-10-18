@@ -1,0 +1,86 @@
+﻿{
+  "info": {
+    "name": "Taller Backend - API Estudiantes",
+    "_postman_id": "taller-backend-api",
+    "description": "Coleccion completa para el CRUD de Estudiantes.\nBackend: Spring Boot 3 + H2 Database\nURL base: http://localhost:8080/api/estudiantes",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080/api/estudiantes",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1 - Crear Estudiante (POST)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "{{base_url}}", "host": ["{{base_url}}"] },
+        "body": {
+          "mode": "raw",
+          "options": { "raw": { "language": "json" } },
+          "raw": "{\n  \"nombre\": \"Ana Lopez\",\n  \"email\": \"ana@taller.com\",\n  \"curso\": \"10A\"\n}"
+        },
+        "description": "Crea un nuevo estudiante. Retorna 201 Created con el objeto guardado (incluye el id generado)."
+      }
+    },
+    {
+      "name": "2 - Crear Estudiante 2 (POST)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "{{base_url}}", "host": ["{{base_url}}"] },
+        "body": {
+          "mode": "raw",
+          "options": { "raw": { "language": "json" } },
+          "raw": "{\n  \"nombre\": \"Pedro Ruiz\",\n  \"email\": \"pedro@taller.com\",\n  \"curso\": \"9B\"\n}"
+        },
+        "description": "Crea un segundo estudiante para tener datos con los que practicar."
+      }
+    },
+    {
+      "name": "3 - Listar Todos (GET)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{base_url}}", "host": ["{{base_url}}"] },
+        "description": "Retorna la lista completa de todos los estudiantes. Retorna 200 OK."
+      }
+    },
+    {
+      "name": "4 - Buscar por ID (GET)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{base_url}}/1", "host": ["{{base_url}}"], "path": ["1"] },
+        "description": "Busca el estudiante con id=1. Cambia el numero al final por el id que necesitas.\nRetorna 200 OK si existe, o 404 Not Found si no."
+      }
+    },
+    {
+      "name": "5 - Modificar Estudiante (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "{{base_url}}/1", "host": ["{{base_url}}"], "path": ["1"] },
+        "body": {
+          "mode": "raw",
+          "options": { "raw": { "language": "json" } },
+          "raw": "{\n  \"nombre\": \"Ana Maria Lopez\",\n  \"email\": \"ana.maria@taller.com\",\n  \"curso\": \"11A\"\n}"
+        },
+        "description": "Actualiza todos los campos del estudiante con id=1.\nCambia el numero en la URL por el id del estudiante a editar.\nRetorna 200 OK con los datos actualizados, o 404 si no existe."
+      }
+    },
+    {
+      "name": "6 - Eliminar Estudiante (DELETE)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": { "raw": "{{base_url}}/1", "host": ["{{base_url}}"], "path": ["1"] },
+        "description": "Elimina el estudiante con id=1.\nCambia el numero en la URL por el id del estudiante a eliminar.\nRetorna 204 No Content si se elimino, o 404 si no existia."
+      }
+    }
+  ]
+}

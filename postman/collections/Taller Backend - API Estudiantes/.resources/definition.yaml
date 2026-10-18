@@ -1,0 +1,7 @@
+$kind: collection
+description: |-
+  Coleccion completa para el CRUD de Estudiantes.
+  Backend: Spring Boot 3 + H2 Database
+  URL base: http://localhost:8080/api/estudiantes
+variables:
+  base_url: http://localhost:8080/api/estudiantes
