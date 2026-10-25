@@ -1,33 +1,32 @@
 # Taller Backend
 
-Aplicacion de gestion de estudiantes con API REST en Spring Boot, base H2 persistente y una interfaz HTML con Vanilla JavaScript y Tailwind CSS.
+A student management application with a Spring Boot REST API, a persistent H2 database, and a web interface built with vanilla JavaScript and Tailwind CSS.
 
-## Requisitos
+## Requirements
 
 - Java 25
-- Maven 3.9 o posterior
-- Node.js 20 o posterior
-- npm
+- Maven 3.9 or later
+- Node.js 20 or later and npm (for end-to-end tests)
 
-## Iniciar el backend
+## Run the application
 
-Desde la raiz del proyecto:
+From the project root, start the Spring Boot application:
 
 ```powershell
 mvn spring-boot:run
 ```
 
-La API queda disponible en `http://localhost:8080/api/estudiantes`. La base H2 se guarda en `data/tallerdb.mv.db` y no se incluye en Git. Puedes cambiar la ruta definiendo la variable de entorno `TALLER_DB_PATH`.
+Open the web interface at [http://localhost:8080/](http://localhost:8080/). Spring Boot serves `index.html` and the REST API from the same origin; a separate frontend server is not required.
 
-Al iniciar por primera vez, `src/main/resources/data.sql` agrega los estudiantes de ejemplo de forma idempotente.
+The API is available at [http://localhost:8080/api/estudiantes](http://localhost:8080/api/estudiantes).
 
-## Abrir la interfaz
+The H2 database is stored in `data/tallerdb.mv.db` and is excluded from Git. Set the `TALLER_DB_PATH` environment variable to use a different absolute database path.
 
-Abre `index.html` con Live Server. CORS está habilitado para los orígenes locales `http://localhost:3000`, `http://localhost:5500` y `http://127.0.0.1:5500`.
+On first startup, `src/main/resources/data.sql` inserts the sample students. The inserts are idempotent, so they do not add duplicates on subsequent startups.
 
-## Ejecutar las pruebas E2E
+## Run the end-to-end tests
 
-Con el backend y Live Server en ejecución:
+With the application running, install the Node.js dependencies and the Playwright Chromium browser:
 
 ```powershell
 npm install
@@ -35,20 +34,33 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-Para inspeccionar el test con un navegador visible:
+To run the tests with a visible browser:
 
 ```powershell
 npm run test:e2e:headed
 ```
 
-El test crea un estudiante con correo único, valida la tarjeta y el modal y elimina el registro de prueba al finalizar.
+The end-to-end test creates a student with a unique email address, checks the student card and profile dialog, and deletes the test record when it finishes.
 
-## Endpoints
+## REST API
 
-| Método | Ruta | Acción |
+All student endpoints use the `/api/estudiantes` base path.
+
+| Method | Path | Description |
 | --- | --- | --- |
-| GET | `/api/estudiantes` | Listar estudiantes |
-| GET | `/api/estudiantes/{id}` | Consultar por ID |
-| POST | `/api/estudiantes` | Crear estudiante |
-| PUT | `/api/estudiantes/{id}` | Actualizar estudiante |
-| DELETE | `/api/estudiantes/{id}` | Eliminar estudiante |
+| GET | `/api/estudiantes` | List all students |
+| GET | `/api/estudiantes/{id}` | Get a student by ID |
+| POST | `/api/estudiantes` | Create a student |
+| PUT | `/api/estudiantes/{id}` | Update a student |
+| DELETE | `/api/estudiantes/{id}` | Delete a student |
+
+## Project structure
+
+| Path | Purpose |
+| --- | --- |
+| `src/main/java` | Spring Boot application, REST controller, service, repository, and entity |
+| `src/main/resources` | Application configuration and sample database data |
+| `src/test/java` | Java integration tests |
+| `tests` | Playwright end-to-end tests |
+| `postman` | Postman collection and request definitions |
+| `index.html` | Web interface served by Spring Boot |

@@ -10,7 +10,7 @@ module.exports = defineConfig({
   },
   reporter: "list",
   use: {
-    baseURL: process.env.PLAYWRIGHT_BASE_URL || "http://127.0.0.1:5500",
+    baseURL: process.env.PLAYWRIGHT_BASE_URL || "http://localhost:8080",
     browserName: "chromium",
     headless: true,
     trace: "retain-on-failure",
