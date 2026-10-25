@@ -4,7 +4,7 @@ A student management application with a Spring Boot REST API, a persistent H2 da
 
 ## Requirements
 
-- Java 25
+- Java 17
 - Maven 3.9 or later
 - Node.js 20 or later and npm (for end-to-end tests)
 
@@ -23,6 +23,17 @@ The API is available at [http://localhost:8080/api/estudiantes](http://localhost
 The H2 database is stored in `data/tallerdb.mv.db` and is excluded from Git. Set the `TALLER_DB_PATH` environment variable to use a different absolute database path.
 
 On first startup, `src/main/resources/data.sql` inserts the sample students. The inserts are idempotent, so they do not add duplicates on subsequent startups.
+
+## Run with Docker
+
+Build the image and start the container from the project root:
+
+```powershell
+docker build -t taller-backend:latest .
+docker run --rm -p 8080:8080 --name taller-backend taller-backend:latest
+```
+
+The Docker image uses Java 17. The H2 database file is stored inside the container, so it is removed when the container is deleted. Mount a host directory at `/app/data` if the database must persist across container runs.
 
 ## Run the end-to-end tests
 

@@ -1,0 +1,12 @@
+.git
+.vscode
+.playwright-mcp
+.postman
+node_modules
+target
+test-results
+playwright-report
+data/*.mv.db
+data/*.trace.db
+data/*.lock.db
+data/*.temp.db

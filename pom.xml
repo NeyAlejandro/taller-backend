@@ -31,7 +31,7 @@
          PROPIEDADES GLOBALES
          ================================================================ -->
     <properties>
-        <java.version>25</java.version>
+        <java.version>17</java.version>
         <!-- Clase principal: requerida por NetBeans para ejecutar el proyecto -->
         <start-class>com.taller.backend.TallerBackendApplication</start-class>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
